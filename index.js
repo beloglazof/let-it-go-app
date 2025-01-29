@@ -1,4 +1,3 @@
-const contentEl = document.getElementById('content');
 const videoEl = document.getElementById('video');
 const tipEl = document.getElementById('tip');
 
@@ -26,5 +25,5 @@ function handleSpaceKeyDown(event) {
   playVideo();
 }
 
-contentEl.addEventListener('click', playVideo);
+document.addEventListener('click', playVideo);
 document.addEventListener('keydown', handleSpaceKeyDown);
