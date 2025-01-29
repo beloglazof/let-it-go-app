@@ -1,6 +1,8 @@
 body {
   margin: 0;
-  height: 100vh;
+  height: var(--tg-viewport-stable-height);
+  color: var(--tg-theme-text-color);
+  background-color: var(--tg-theme-bg-color);
 }
 
 .content {

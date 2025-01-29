@@ -14,10 +14,10 @@ function letGo() {
     tipEl.classList.add('hidden');
   }
 
-  catEl.src = `./assets/let-go-cat-animated.png`;
+  catEl.src = `./assets/animated-cat.png`;
 
   const timeoutId = setTimeout(() => {
-    catEl.src = `./assets/frame_1.png`;
+    catEl.src = `./assets/static-cat.png`;
     clearTimeout(timeoutId);
   }, 1500);
 }
