@@ -6,19 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Let It Go</title>
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="prefetch" href="./assets/let-go-cat-animated.png" />
 </head>
 
 <body>
   <div id="content" class="content">
-    <p id="tip" class="tip">Нажмите в любом месте, чтобы отпустить</p>
-    <video id="video">
-      <source src="./assets/let-go-cat.webm" />
-      <source src="./assets/let-go-cat.mp4" />
-      <p>
-        Ваш браузер не поддерживает HTML видео. Вот
-        <a href="./assets/let-go-cat.mp4" download="let-go-cat.mp4">ссылка, чтобы скачать его</a>.
-      </p>
-    </video>
+    <div class="img-container">
+      <p id="tip" class="tip">Нажмите в любом месте, чтобы отпустить</p>
+      <img id="cat" src="./assets/frame_1.png" alt="Кот кидает камни" class="cat">
+    </div>
   </div>
 
   <script src="./index.js"></script>

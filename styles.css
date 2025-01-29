@@ -1,17 +1,35 @@
+body {
+  margin: 0;
+  height: 100vh;
+}
+
 .content {
-  position: relative;
+  padding: 8px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.img-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
 .tip {
   position: absolute;
-  top: 10px;
+  top: 0;
+  margin: 0;
   font-family: 'Courier New', Courier, monospace;
+  text-align: center;
 }
 
 .hidden {
   display: none;
+}
+
+.cat {
+  width: 100%;
 }

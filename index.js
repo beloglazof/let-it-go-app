@@ -1,10 +1,10 @@
-const videoEl = document.getElementById('video');
 const tipEl = document.getElementById('tip');
+const catEl = document.getElementById('cat');
 
 let firstPlay = true;
 
-function playVideo() {
-  if (!videoEl) {
+function letGo() {
+  if (!catEl) {
     return;
   }
 
@@ -14,7 +14,12 @@ function playVideo() {
     tipEl.classList.add('hidden');
   }
 
-  videoEl.play();
+  catEl.src = `./assets/let-go-cat-animated.png`;
+
+  const timeoutId = setTimeout(() => {
+    catEl.src = `./assets/frame_1.png`;
+    clearTimeout(timeoutId);
+  }, 1500);
 }
 
 function handleSpaceKeyDown(event) {
@@ -22,8 +27,8 @@ function handleSpaceKeyDown(event) {
     return;
   }
 
-  playVideo();
+  letGo();
 }
 
-document.addEventListener('click', playVideo);
+document.addEventListener('click', letGo);
 document.addEventListener('keydown', handleSpaceKeyDown);
