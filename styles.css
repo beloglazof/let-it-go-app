@@ -1,0 +1,17 @@
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tip {
+  position: absolute;
+  top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.hidden {
+  display: none;
+}

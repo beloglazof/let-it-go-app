@@ -1,0 +1,12 @@
+{
+  "name": "let-it-go-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve . -p 3801"
+  },
+  "keywords": [],
+  "author": "Slava Beloglazov",
+  "license": "ISC",
+  "description": "Just let it go"
+}
