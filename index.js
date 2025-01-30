@@ -2,10 +2,15 @@ const tipEl = document.getElementById('tip');
 const catEl = document.getElementById('cat');
 
 let firstPlay = true;
+let timeoutId;
 
 function letGo() {
   if (!catEl) {
     return;
+  }
+
+  if (timeoutId) {
+    clearTimeout(timeoutId);
   }
 
   if (firstPlay) {
@@ -16,7 +21,7 @@ function letGo() {
 
   catEl.src = `./assets/animated-cat.png`;
 
-  const timeoutId = setTimeout(() => {
+  timeoutId = setTimeout(() => {
     catEl.src = `./assets/static-cat.png`;
     clearTimeout(timeoutId);
   }, 1500);
