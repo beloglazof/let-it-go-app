@@ -10,7 +10,6 @@ button {
   padding: 0;
   border: none;
   cursor: pointer;
-  color: var(--tg-theme-button-text-color);
 }
 
 .content {
