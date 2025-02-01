@@ -5,6 +5,14 @@ body {
   background-color: var(--tg-theme-bg-color);
 }
 
+button {
+  background: none;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  color: var(--tg-theme-button-text-color);
+}
+
 .content {
   padding: 8px;
   height: 100%;
@@ -36,4 +44,29 @@ body {
 
 .cat {
   width: 100%;
+}
+
+.music-button {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  padding: 0;
+  display: flex;
+  font-size: 1em;
+}
+
+.buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.speed-button {
+  padding: 4px 6px;
+  font-size: 1em;
+  border: 1px solid var(--tg-theme-secondary-bg-color);
+}
+
+.speed-button.active {
+  background-color: var(--tg-theme-accent-text-color);
+  font-weight: 600;
 }
