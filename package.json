@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npx serve . -p 3801"
+    "start": "vite --port 3801",
+    "build": "vite build",
+    "preview": "vite preview --port 3801"
   },
   "keywords": [],
   "author": "Slava Beloglazov",
   "license": "ISC",
-  "description": "Just let it go"
+  "description": "Just let it go",
+  "devDependencies": {
+    "vite": "^6.0.11"
+  }
 }

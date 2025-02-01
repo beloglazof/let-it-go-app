@@ -16,6 +16,8 @@ body {
 
 .img-container {
   position: relative;
+  max-width: 512px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
