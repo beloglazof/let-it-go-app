@@ -1,4 +1,4 @@
-export const fps = 60;
+export const fps = 90;
 export const AnimationState = {
   Idle: 'idle',
   Play: 'play',

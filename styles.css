@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  height: var(--tg-viewport-stable-height);
   color: var(--tg-theme-text-color);
   background-color: var(--tg-theme-bg-color);
 }
@@ -14,12 +13,24 @@ button {
 }
 
 .content {
+  margin-top: 100px;
   padding: 8px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+}
+
+.topic-card {
+  max-height: 82px;
+  overflow: hidden;
+  text-align: center;
+  font-weight: 600;
+}
+
+.topic-card-body {
+  color: var(--tg-theme-text-color);
 }
 
 .img-container {
@@ -44,6 +55,7 @@ button {
 
 .cat {
   width: 100%;
+  user-select: none;
 }
 
 .music-button {
