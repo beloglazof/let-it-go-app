@@ -14,6 +14,10 @@ let animationState = AnimationState.Idle;
 let animationSpeed = 1000 / fps;
 let topicCardPlaceholderEl = document.getElementById('topic-card-placeholder');
 
+if (window.Telegram) {
+  document.documentElement.dataset.bsTheme = window.Telegram.WebApp.colorScheme;
+}
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
