@@ -62,11 +62,16 @@ button {
 
 .music-button {
   position: fixed;
-  top: 32px;
-  left: 32px;
+  left: -0.6em;
   padding: 0;
   display: flex;
-  font-size: 1em;
+  font-size: 1.8em;
+  transform: rotate(90deg);
+  transition: left 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.music-button.playing {
+  left: 0;
 }
 
 .counter-container {
