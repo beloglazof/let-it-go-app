@@ -4,12 +4,18 @@ body {
   background-color: var(--tg-theme-bg-color);
 }
 
-button {
-  background: none;
+.music-button {
+  position: fixed;
+  left: -0.6em;
   padding: 0;
-  border: none;
-  cursor: pointer;
-  color: var(--tg-theme-text-color);
+  display: flex;
+  font-size: 1.8em;
+  transform: rotate(90deg);
+  transition: left 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.music-button.playing {
+  left: 0;
 }
 
 .content {
@@ -43,35 +49,9 @@ button {
   justify-content: center;
 }
 
-.tip {
-  position: absolute;
-  top: 0;
-  margin: 0;
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
 .cat {
   width: 100%;
   user-select: none;
-}
-
-.music-button {
-  position: fixed;
-  left: -0.6em;
-  padding: 0;
-  display: flex;
-  font-size: 1.8em;
-  transform: rotate(90deg);
-  transition: left 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.music-button.playing {
-  left: 0;
 }
 
 .counter-container {
@@ -80,22 +60,4 @@ button {
   right: 16px;
   display: flex;
   align-items: center;
-}
-
-.buttons {
-  display: flex;
-  gap: 6px;
-}
-
-.speed-button {
-  padding: 4px 6px;
-  width: 42px;
-  font-size: 1rem;
-  background-color: var(--tg-theme-secondary-bg-color);
-  border-radius: 6px;
-}
-
-.speed-button.active {
-  color: var(--tg-theme-accent-text-color);
-  font-weight: 600;
 }
