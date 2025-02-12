@@ -6,16 +6,19 @@ body {
 
 .music-button {
   position: fixed;
-  left: -0.6em;
+  bottom: -0.5em;
+  right: -0.4em;
   padding: 0;
   display: flex;
   font-size: 1.8em;
-  transform: rotate(90deg);
-  transition: left 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transform: rotate(-45deg);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 1;
 }
 
 .music-button.playing {
-  left: 0;
+  right: -0.25em;
+  bottom: -0.35em;
 }
 
 .content {
