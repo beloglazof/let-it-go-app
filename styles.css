@@ -6,8 +6,8 @@ body {
 
 .music-button {
   position: fixed;
-  bottom: -0.5em;
-  right: -0.4em;
+  bottom: calc(-0.5em + 8px);
+  right: calc(-0.4em + 8px);
   padding: 0;
   display: flex;
   font-size: 1.8em;
@@ -17,8 +17,8 @@ body {
 }
 
 .music-button.playing {
-  right: -0.25em;
-  bottom: -0.35em;
+  right: calc(-0.25em + 8px);
+  bottom: calc(-0.35em + 8px);
 }
 
 .content {
