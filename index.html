@@ -23,7 +23,7 @@
 
   <div id="content" class="content">
     <div id="topic-card" class="card topic-card">
-      <div id="topic-card-body" class="topic-card-body card-body text-break text-wrap" role="textbox"
+      <div id="topic-card-body" class="topic-card-body card-body text-break text-wrap p-2" role="textbox"
         contenteditable="true" tabindex="0">
         <span id="topic-card-placeholder">
           Что сегодня отпускаем?
@@ -37,6 +37,12 @@
           0
         </span>
       </div>
+      <div class="speed-buttons" role="group" aria-label="Animation speed button group">
+        <button id="speed-1-button" class="btn btn-sm px-1">1x</button>
+        <button id="speed-2-button" class="btn btn-sm px-1">1.5x</button>
+        <button id="speed-3-button" class="btn btn-sm px-1">2x</button>
+      </div>
+
       <img id="cat" src="/cat-frames/frame23.png" alt="Кот сидит и кидает камни" class="cat">
       <div>
         <img id="cat" src="/cat-frames/frame24.png" class="d-none">
@@ -157,11 +163,6 @@
       </div>
     </div>
 
-    <div class="btn-group-sm" role="group" aria-label="Animation speed button group">
-      <button id="speed-1-button" class="btn">1x</button>
-      <button id="speed-2-button" class="btn">1.5x</button>
-      <button id="speed-3-button" class="btn">2x</button>
-    </div>
   </div>
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

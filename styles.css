@@ -19,8 +19,8 @@ body {
 }
 
 .content {
-  margin-top: 100px;
-  padding: 8px;
+  position: relative;
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,6 +34,7 @@ body {
   text-align: center;
   font-weight: 600;
   background-color: var(--tg-theme-bg-color);
+  border-color: var(--bs-btn-active-border-color);
 }
 
 .topic-card-body {
@@ -42,6 +43,7 @@ body {
 }
 
 .img-container {
+  padding-top: 60px;
   position: relative;
   max-width: 512px;
   width: 100%;
@@ -60,4 +62,13 @@ body {
   right: 16px;
   display: flex;
   align-items: center;
+}
+
+.speed-buttons {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 4px;
 }
