@@ -32,7 +32,13 @@ body {
 }
 
 .topic-card {
+  position: relative;
   max-height: 82px;
+  min-width: 216px;
+  padding: 0.5rem;
+  gap: 4px;
+  flex-direction: row;
+  align-items: center;
   overflow: hidden;
   text-align: center;
   font-weight: 600;
@@ -41,8 +47,17 @@ body {
 }
 
 .topic-card-body {
+  padding: 0;
   color: var(--tg-theme-text-color);
   outline: none;
+}
+
+#topic-card-placeholder {
+  opacity: 0.6;
+}
+
+.clear-button {
+  padding: 0;
 }
 
 .img-container {
