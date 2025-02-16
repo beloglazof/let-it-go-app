@@ -40,6 +40,6 @@ clearButtonEl.addEventListener('click', (event) => {
   event.stopPropagation();
   event.preventDefault();
 
-  topicCardBodyEl.removeChild(topicCardBodyEl.firstChild);
+  topicCardBodyEl.textContent = '';
   handleEmptyCard();
 });
