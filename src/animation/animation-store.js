@@ -1,4 +1,4 @@
-import { AnimationState, fps } from './constants';
+import { AnimationState, fps } from '../constants';
 
 function roundSpeed(value, decimalPlaces = 3) {
   const multiplier = 10 ** decimalPlaces;

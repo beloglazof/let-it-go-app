@@ -1,7 +1,10 @@
 import { AnimationState } from './src/constants';
-import { animate } from './src/animate';
-import { animationStateStore, animationSpeedStore } from './src/animationStore';
-import { incCounter } from './src/counterController';
+import { animate } from './src/animation/animate';
+import {
+  animationStateStore,
+  animationSpeedStore,
+} from './src/animation/animation-store';
+import { incCounter } from './src/counter/counter-controller';
 
 const catEl = document.getElementById('cat');
 

@@ -1,4 +1,4 @@
-import { counterStore } from './counterStore';
+import { counterStore } from './counter-store';
 
 const counterEl = document.getElementById('counter');
 

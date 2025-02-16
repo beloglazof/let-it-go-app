@@ -1,5 +1,5 @@
-import { animationStateStore } from './animationStore';
-import { frames } from './constants';
+import { animationStateStore } from './animation-store';
+import { frames } from '../constants';
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
