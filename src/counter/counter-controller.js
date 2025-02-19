@@ -8,3 +8,11 @@ export function incCounter() {
   counterStore.inc();
   counterEl.innerText = counterStore.counter;
 }
+
+counterEl.addEventListener('click', (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  counterStore.reset();
+  counterEl.innerText = counterStore.counter;
+});

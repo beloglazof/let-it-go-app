@@ -3,4 +3,7 @@ export const counterStore = {
   inc: function () {
     this.counter += 1;
   },
+  reset: function () {
+    this.counter = 0;
+  },
 };
