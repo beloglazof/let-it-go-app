@@ -26,3 +26,9 @@ function letGo() {
 }
 
 document.addEventListener('click', letGo);
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    letGo();
+  }
+});
