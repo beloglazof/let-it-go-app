@@ -9,8 +9,12 @@ export async function animate(catEl, animationSpeed, sound) {
   animationStateStore.playstart();
 
   const animationDuration = frames.length * animationSpeed;
-  const soundDuration = sound.duration * 1000;
-  let soundState = 'idle';
+  let soundDuration, soundState;
+
+  if (sound) {
+    soundDuration = sound.duration * 1000;
+    soundState = 'idle';
+  }
 
   for (let i = 0; i < frames.length; i++) {
     requestAnimationFrame(() => {
@@ -29,6 +33,9 @@ export async function animate(catEl, animationSpeed, sound) {
   }
 
   animationStateStore.playend();
-  sound.pause();
-  sound.currentTime = 0;
+
+  if (sound) {
+    sound.pause();
+    sound.currentTime = 0;
+  }
 }

@@ -23,7 +23,10 @@ function letGo() {
     return;
   }
 
-  animate(catEl, animationSpeedStore.speed, stoneFallSound);
+  const withSound = soundStatusButton.dataset.status === 'on';
+  const sound = withSound ? stoneFallSound : null;
+
+  animate(catEl, animationSpeedStore.speed, sound);
   incCounter();
 }
 
@@ -41,11 +44,9 @@ soundStatusButton.addEventListener(
     event.preventDefault();
 
     if (this.dataset.status === 'on') {
-      stoneFallSound.volume = 0;
       this.dataset.status = 'off';
       this.textContent = '🔈';
     } else if (this.dataset.status === 'off') {
-      stoneFallSound.volume = 1;
       this.dataset.status = 'on';
       this.textContent = '🔇';
     }
