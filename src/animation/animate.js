@@ -5,15 +5,27 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export async function animate(catEl, animationSpeed) {
+export async function animate(catEl, animationSpeed, sound) {
   animationStateStore.playstart();
 
-  for await (const frame of frames) {
+  const animationDuration = frames.length * animationSpeed;
+  const soundDuration = sound.duration * 1000;
+  let soundState = 'idle';
+
+  for (let i = 0; i < frames.length; i++) {
     requestAnimationFrame(() => {
-      catEl.src = `/cat-frames/${frame}`;
+      catEl.src = `/cat-frames/${frames[i]}`;
     });
 
     await sleep(animationSpeed);
+
+    if (
+      animationDuration - animationSpeed * i < soundDuration &&
+      soundState === 'idle'
+    ) {
+      soundState = 'playing';
+      sound.play();
+    }
   }
 
   animationStateStore.playend();

@@ -7,6 +7,7 @@ import {
 import { incCounter } from './src/counter/counter-controller';
 
 const catEl = document.getElementById('cat');
+const stoneFallSound = document.getElementById('stone-fall-sound');
 
 if (window.Telegram) {
   document.documentElement.dataset.bsTheme = window.Telegram.WebApp.colorScheme;
@@ -21,7 +22,7 @@ function letGo() {
     return;
   }
 
-  animate(catEl, animationSpeedStore.speed);
+  animate(catEl, animationSpeedStore.speed, stoneFallSound);
   incCounter();
 }
 
