@@ -29,4 +29,6 @@ export async function animate(catEl, animationSpeed, sound) {
   }
 
   animationStateStore.playend();
+  sound.pause();
+  sound.currentTime = 0;
 }
