@@ -43,3 +43,9 @@ clearButtonEl.addEventListener('click', (event) => {
   topicCardBodyEl.textContent = '';
   handleEmptyCard();
 });
+
+topicCardBodyEl.addEventListener('keydown', (event) => {
+  if (event.key === ' ') {
+    event.stopPropagation();
+  }
+});
