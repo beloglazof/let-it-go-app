@@ -1,4 +1,5 @@
 const placeholderId = 'topic-card-placeholder';
+const topicCardEl = document.getElementById('topic-card');
 const topicCardBodyEl = document.getElementById('topic-card-body');
 const clearButtonEl = document.getElementById('clear-button');
 
@@ -17,12 +18,10 @@ function createCardPlaceholder() {
 function handleEmptyCard() {
   topicCardBodyEl.insertAdjacentElement('afterbegin', createCardPlaceholder());
   clearButtonEl.classList.add('d-none');
+  topicCardEl.style.paddingRight = null;
 }
 
-topicCardBodyEl.addEventListener('click', (event) => {
-  event.stopPropagation();
-  event.preventDefault();
-
+topicCardBodyEl.addEventListener('click', () => {
   placeholderEl.remove();
 });
 
@@ -34,12 +33,10 @@ topicCardBodyEl.addEventListener('blur', (event) => {
 
 topicCardBodyEl.addEventListener('input', () => {
   clearButtonEl.classList.remove('d-none');
+  topicCardEl.style.paddingRight = 'calc(0.5rem + 18px)';
 });
 
-clearButtonEl.addEventListener('click', (event) => {
-  event.stopPropagation();
-  event.preventDefault();
-
+clearButtonEl.addEventListener('click', () => {
   topicCardBodyEl.textContent = '';
   handleEmptyCard();
 });

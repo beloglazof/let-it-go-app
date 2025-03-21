@@ -32,22 +32,49 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+}
+
+.toolbox {
+  margin-top: 8px;
+  padding: 0 4px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-button {
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+}
+
+.counter-container {
+  display: flex;
+  align-items: center;
 }
 
 .topic-card {
   position: relative;
   max-height: 82px;
-  min-width: 216px;
+  min-width: 300px;
   padding: 0.5rem;
   gap: 4px;
   flex-direction: row;
   align-items: center;
   overflow: hidden;
   text-align: center;
+  font-size: 1.3rem;
   font-weight: 600;
   background-color: var(--tg-theme-bg-color);
   border-color: var(--bs-btn-active-border-color);
+  border-radius: 0;
+  border-width: 0;
+  border-bottom-width: 1px;
 }
 
 .topic-card-body {
@@ -61,11 +88,13 @@ body {
 }
 
 .clear-button {
+  position: absolute;
+  right: 0.5rem;
   padding: 0;
 }
 
 .img-container {
-  padding-top: 60px;
+  margin-top: 20px;
   position: relative;
   width: 100%;
   display: flex;
@@ -77,27 +106,20 @@ body {
   user-select: none;
 }
 
-.sound-status-button {
-  position: absolute;
-  top: 0;
-  left: 16px;
-  padding: 0.5rem;
-  font-size: 1.2em;
-}
-
-.counter-container {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  align-items: center;
-}
-
 .speed-buttons {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
+  grid-template-columns: repeat(3, 36px);
   gap: 4px;
+}
+
+.setting-section {
+  padding: 16px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.setting-section h6 {
+  margin-bottom: 0;
 }

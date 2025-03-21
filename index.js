@@ -8,7 +8,7 @@ import { incCounter } from './src/counter/counter-controller';
 
 const catEl = document.getElementById('cat');
 const stoneFallSound = document.getElementById('stone-fall-sound');
-const soundStatusButton = document.getElementById('sound-status-button');
+const soundStatus = document.getElementById('sound-status');
 
 if (window.Telegram) {
   document.documentElement.dataset.bsTheme = window.Telegram.WebApp.colorScheme;
@@ -23,34 +23,15 @@ function letGo() {
     return;
   }
 
-  const withSound = soundStatusButton.dataset.status === 'on';
-  const sound = withSound ? stoneFallSound : null;
+  const withSound = soundStatus.checked;
 
-  animate(catEl, animationSpeedStore.speed, sound);
+  animate(catEl, animationSpeedStore.speed, withSound);
   incCounter();
 }
 
-document.addEventListener('click', letGo);
+catEl.addEventListener('click', letGo);
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
     letGo();
   }
 });
-
-soundStatusButton.addEventListener(
-  'click',
-  function (event) {
-    event.stopPropagation();
-    event.preventDefault();
-
-    if (this.dataset.status === 'on') {
-      this.dataset.status = 'off';
-      this.textContent = '🔈';
-    } else if (this.dataset.status === 'off') {
-      this.dataset.status = 'on';
-      this.textContent = '🔇';
-    }
-    this.setAttribute('aria-checked', state ? 'false' : 'true');
-  },
-  false,
-);
