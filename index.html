@@ -22,32 +22,57 @@
     🕺
   </button>
 
-  <div class="content">
-    <div id="topic-card" class="card topic-card">
-      <div id="topic-card-body" class="topic-card-body card-body text-break text-wrap" role="textbox"
-        contenteditable="true" tabindex="0">
-        <span id="topic-card-placeholder">
-          Что будем отпускать?
-        </span>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="settings" aria-labelledby="settingsLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="settingsLabel">Настройки</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+        id="settings-close-button"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="setting-section">
+        <h6>Звук</h6>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="sound-status" checked>
+        </div>
       </div>
-      <button id="clear-button" class="btn btn-sm clear-button d-none">✗</button>
+      <div class="setting-section">
+        <h6>Скорость</h6>
+        <div class="speed-buttons" role="group" aria-label="Animation speed button group">
+          <button id="speed-1-button" class="btn btn-sm px-1">1x</button>
+          <button id="speed-2-button" class="btn btn-sm px-1">1.5x</button>
+          <button id="speed-3-button" class="btn btn-sm px-1">2x</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div>
+      <div id="topic-card" class="card topic-card">
+        <div id="topic-card-body" class="topic-card-body card-body text-break text-wrap" role="textbox"
+          contenteditable="true" tabindex="0">
+          <span id="topic-card-placeholder">
+            Что будем отпускать?
+          </span>
+        </div>
+        <button id="clear-button" class="btn btn-sm clear-button d-none">✗</button>
+      </div>
+
+      <div class="toolbox">
+        <button id="settings-button" class="btn btn-sm settings-button" data-bs-toggle="offcanvas"
+          data-bs-target="#settings" aria-controls="settings">
+          ⚙️
+        </button>
+
+        <div class="counter-container">
+          <span id="counter" class="badge text-bg-secondary rounded-pill" role="button">
+            0
+          </span>
+        </div>
+      </div>
     </div>
 
-    <button id="sound-status-button" class="btn btn-sm sound-status-button" role="switch" aria-checked="false"
-      data-status="on">
-      🔇
-    </button>
     <div class="img-container">
-      <div class="speed-buttons" role="group" aria-label="Animation speed button group">
-        <button id="speed-1-button" class="btn btn-sm px-1">1x</button>
-        <button id="speed-2-button" class="btn btn-sm px-1">1.5x</button>
-        <button id="speed-3-button" class="btn btn-sm px-1">2x</button>
-      </div>
-      <div class="counter-container">
-        <span id="counter" class="badge text-bg-secondary rounded-pill" role="button">
-          0
-        </span>
-      </div>
       <img id="cat" src="/cat-frames/frame23.png" alt="Кот сидит и кидает камни" class="cat">
       <div>
         <img id="cat" src="/cat-frames/frame24.png" class="d-none">
