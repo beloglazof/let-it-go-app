@@ -24,9 +24,8 @@ function letGo() {
   }
 
   const withSound = soundStatus.checked;
-  const sound = withSound ? stoneFallSound : null;
 
-  animate(catEl, animationSpeedStore.speed, sound);
+  animate(catEl, animationSpeedStore.speed, withSound);
   incCounter();
 }
 

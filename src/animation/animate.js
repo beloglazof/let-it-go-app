@@ -1,20 +1,17 @@
 import { animationStateStore } from './animation-store';
 import { frames } from '../constants';
 
+const sound = new Audio('stone-fall.MP3');
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export async function animate(catEl, animationSpeed, sound) {
+export async function animate(catEl, animationSpeed, withSound) {
   animationStateStore.playstart();
 
-  const animationDuration = frames.length * animationSpeed;
-  let soundDuration, soundState;
-
-  if (sound) {
-    soundDuration = sound.duration * 1000;
-    soundState = 'idle';
-  }
+  const animationDurationInSec = frames.length * animationSpeed;
+  const soundDurationInSec = sound.duration * 1000;
 
   for (let i = 0; i < frames.length; i++) {
     requestAnimationFrame(() => {
@@ -23,11 +20,12 @@ export async function animate(catEl, animationSpeed, sound) {
 
     await sleep(animationSpeed);
 
-    if (
-      animationDuration - animationSpeed * i < soundDuration &&
-      soundState === 'idle'
-    ) {
-      soundState = 'playing';
+    const shouldPlaySound =
+      animationDurationInSec - animationSpeed * i < soundDurationInSec &&
+      sound.paused &&
+      withSound;
+
+    if (shouldPlaySound) {
       sound.play();
     }
   }
@@ -36,6 +34,6 @@ export async function animate(catEl, animationSpeed, sound) {
 
   if (sound) {
     sound.pause();
-    sound.currentTime = 0;
+    sound.fastSeek(0);
   }
 }
