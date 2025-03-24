@@ -7,7 +7,7 @@ import {
 import { incCounter } from './src/counter/counter-controller';
 
 const catEl = document.getElementById('cat');
-const stoneFallSound = document.getElementById('stone-fall-sound');
+const catContainerEl = document.getElementById('cat-container');
 const soundStatus = document.getElementById('sound-status');
 
 if (window.Telegram) {
@@ -29,7 +29,7 @@ function letGo() {
   incCounter();
 }
 
-catEl.addEventListener('click', letGo);
+catContainerEl.addEventListener('click', letGo);
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
     letGo();
