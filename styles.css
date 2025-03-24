@@ -26,7 +26,7 @@ body {
 
 .content {
   position: relative;
-  margin-top: 60px;
+  margin-top: 80px;
   max-width: 512px;
   display: flex;
   flex-direction: column;
@@ -68,7 +68,7 @@ body {
   align-items: center;
   overflow: hidden;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 600;
   background-color: var(--tg-theme-bg-color);
   border-color: var(--bs-btn-active-border-color);
@@ -95,6 +95,7 @@ body {
 
 .img-container {
   margin-top: 20px;
+  padding: 0 0 3rem;
   position: relative;
   width: 100%;
   display: flex;
