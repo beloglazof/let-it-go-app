@@ -1,7 +1,7 @@
 import { animationStateStore } from './animation-store';
 import { frames } from '../constants';
 
-const sound = new Audio(`${import.meta.env.BASE_URL}stone-fall.MP3`);
+const sound = new Audio(`${import.meta.env.BASE_URL}/stone-fall.MP3`);
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -15,7 +15,7 @@ export async function animate(catEl, animationSpeed, withSound) {
 
   for (let i = 0; i < frames.length; i++) {
     requestAnimationFrame(() => {
-      catEl.src = `${import.meta.env.BASE_URL}cat-frames/${frames[i]}`;
+      catEl.src = `${import.meta.env.BASE_URL}/cat-frames/${frames[i]}`;
     });
 
     await sleep(animationSpeed);
