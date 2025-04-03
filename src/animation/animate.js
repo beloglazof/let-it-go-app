@@ -2,8 +2,10 @@ import { animationStateStore } from './animation-store';
 import { frames } from '../constants';
 
 function getPublicPathTo(filePath) {
-  const base = import.meta.env.BASE_URL || '/';
-  const url = `${base}${filePath}`;
+  const envBaseUrl = import.meta.env.BASE_URL;
+  const baseUrl = envBaseUrl.endsWith('/') ? envBaseUrl : `${envBaseUrl}/`;
+
+  const url = `${baseUrl}${filePath}`;
 
   return url;
 }
