@@ -19,8 +19,15 @@ function sleep(ms) {
 export async function animate(catEl, animationSpeed, withSound) {
   animationStateStore.playstart();
 
-  const animationDurationInSec = frames.length * animationSpeed;
-  const soundDurationInSec = sound.duration * 1000;
+  if (withSound) {
+    const animationDurationInMs = frames.length * animationSpeed;
+    const soundDurationInMs = sound.duration * 1000;
+    const soundStartDelay = animationDurationInMs - soundDurationInMs;
+    const timeoutId = setTimeout(() => {
+      sound.play();
+      clearTimeout(timeoutId);
+    }, soundStartDelay);
+  }
 
   for (let i = 0; i < frames.length; i++) {
     requestAnimationFrame(() => {
@@ -28,15 +35,6 @@ export async function animate(catEl, animationSpeed, withSound) {
     });
 
     await sleep(animationSpeed);
-
-    const shouldPlaySound =
-      animationDurationInSec - animationSpeed * i < soundDurationInSec &&
-      sound.paused &&
-      withSound;
-
-    if (shouldPlaySound) {
-      sound.play();
-    }
   }
 
   animationStateStore.playend();
