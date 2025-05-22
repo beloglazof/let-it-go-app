@@ -1,5 +1,9 @@
 import { animationStateStore } from './animation-store';
-import { frames } from '../constants';
+import { FRAMES } from '../constants';
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 function getPublicPathTo(filePath) {
   const envBaseUrl = import.meta.env.BASE_URL;
@@ -12,15 +16,14 @@ function getPublicPathTo(filePath) {
 
 const sound = new Audio(getPublicPathTo(`stone-fall.MP3`));
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 export async function animate(catEl, animationSpeed, withSound) {
   animationStateStore.playstart();
 
   if (withSound) {
-    const animationDurationInMs = frames.length * animationSpeed;
+    sound.pause();
+    sound.fastSeek(0);
+
+    const animationDurationInMs = FRAMES.length * animationSpeed;
     const soundDurationInMs = sound.duration * 1000;
     const soundStartDelay = animationDurationInMs - soundDurationInMs;
     const timeoutId = setTimeout(() => {
@@ -29,18 +32,13 @@ export async function animate(catEl, animationSpeed, withSound) {
     }, soundStartDelay);
   }
 
-  for (let i = 0; i < frames.length; i++) {
+  for (let i = 0; i < FRAMES.length; i++) {
     requestAnimationFrame(() => {
-      catEl.src = getPublicPathTo(`cat-frames/${frames[i]}`);
+      catEl.src = getPublicPathTo(`cat-frames/${FRAMES[i]}`);
     });
 
     await sleep(animationSpeed);
   }
 
   animationStateStore.playend();
-
-  if (sound) {
-    sound.pause();
-    sound.fastSeek(0);
-  }
 }
