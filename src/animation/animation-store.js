@@ -1,4 +1,4 @@
-import { AnimationState, fps } from '../constants';
+import { AnimationState, FPS } from '../constants';
 
 function roundSpeed(value, decimalPlaces = 3) {
   const multiplier = 10 ** decimalPlaces;
@@ -16,8 +16,8 @@ export const animationStateStore = {
 };
 
 export const animationSpeedStore = {
-  speed: roundSpeed(1000 / fps),
+  speed: roundSpeed(1000 / FPS), // in ms
   change: function (multiplier) {
-    this.speed = roundSpeed(1000 / (fps * multiplier));
+    this.speed = roundSpeed(1000 / (FPS * multiplier));
   },
 };
