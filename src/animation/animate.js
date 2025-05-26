@@ -21,7 +21,7 @@ export async function animate(catEl, animationSpeed, withSound) {
 
   if (withSound) {
     sound.pause();
-    sound.fastSeek(0);
+    sound.currentTime = 0;
 
     const animationDurationInMs = FRAMES.length * animationSpeed;
     const soundDurationInMs = sound.duration * 1000;
