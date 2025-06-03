@@ -9,14 +9,15 @@ import { incCounter } from './src/counter/counter-controller';
 const catEl = document.getElementById('cat');
 const catContainerEl = document.getElementById('cat-container');
 const soundStatus = document.getElementById('sound-status');
+const preferColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-if (window.Telegram) {
-  document.documentElement.dataset.bsTheme = window.Telegram.WebApp.colorScheme;
-
-  window.Telegram.WebApp.onEvent('themeChanged', function () {
-    document.documentElement.dataset.bsTheme = this.colorScheme;
-  });
+function setColorTheme() {
+  document.documentElement.dataset.bsTheme = preferColorScheme.matches
+    ? 'dark'
+    : 'light';
 }
+
+setColorTheme();
 
 function letGo() {
   if (!catEl || animationStateStore.state === AnimationState.Play) {
@@ -34,4 +35,7 @@ document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
     letGo();
   }
+});
+preferColorScheme.addEventListener('change', () => {
+  setColorTheme();
 });
