@@ -1,116 +1,290 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Просто отпусти это</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Просто отпусти это</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="./styles.css" />
-  <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-</head>
+  <body>
+    <audio id="music" src="/otpuskaesh.MP3" loop></audio>
+    <button id="music-button" class="btn music-button">🕺</button>
 
-<body>
-  <audio id="music" src="/otpuskaesh.MP3" loop></audio>
-  <button id="music-button" class="btn music-button">
-    🕺
-  </button>
-
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="settings" aria-labelledby="settingsLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="settingsLabel">Настройки</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
-        id="settings-close-button"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="setting-section">
-        <h6>Звук</h6>
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" role="switch" id="sound-status" checked>
-        </div>
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="settings"
+      aria-labelledby="settingsLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="settingsLabel">Настройки</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+          id="settings-close-button"
+        ></button>
       </div>
-      <div class="setting-section">
-        <h6>Скорость</h6>
-        <div class="speed-buttons" role="group" aria-label="Animation speed button group">
-          <button id="speed-1-button" class="btn btn-sm px-1">1x</button>
-          <button id="speed-2-button" class="btn btn-sm px-1">1.5x</button>
-          <button id="speed-3-button" class="btn btn-sm px-1">2x</button>
+      <div class="offcanvas-body">
+        <div class="setting-section">
+          <h6>Звук</h6>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="sound-status"
+              checked
+            />
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="content">
-    <div>
-      <div id="topic-card" class="card topic-card">
-        <div id="topic-card-body" class="topic-card-body card-body text-break text-wrap" role="textbox"
-          contenteditable="true" tabindex="0">
-          <span id="topic-card-placeholder">
-            Что будем отпускать?
-          </span>
-        </div>
-        <button id="clear-button" class="btn btn-sm clear-button d-none">✗</button>
-      </div>
-
-      <div class="toolbox">
-        <button id="settings-button" class="btn btn-sm settings-button" data-bs-toggle="offcanvas"
-          data-bs-target="#settings" aria-controls="settings">
-          ⚙️
-        </button>
-
-        <div class="counter-container">
-          <span id="counter" class="badge text-bg-secondary rounded-pill" role="button">
-            0
-          </span>
+        <div class="setting-section">
+          <h6>Скорость</h6>
+          <div
+            class="speed-buttons"
+            role="group"
+            aria-label="Animation speed button group"
+          >
+            <button id="speed-1-button" class="btn btn-sm px-1">1x</button>
+            <button id="speed-2-button" class="btn btn-sm px-1">1.5x</button>
+            <button id="speed-3-button" class="btn btn-sm px-1">2x</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="cat-container" class="img-container">
-      <img id="cat" src="/cat-frames/frame23.png" alt="Кот сидит и кидает камни" class="cat">
+    <div class="content">
       <div>
-        <img id="cat" src="/cat-frames/frame28.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame33.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame38.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame43.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame48.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame53.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame58.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame63.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame68.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame73.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame78.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame83.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame88.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame93.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame98.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame103.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame108.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame113.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame2.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame7.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame12.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame17.png" class="d-none">
-        <img id="cat" src="/cat-frames/frame22.png" class="d-none">
+        <div id="topic-card" class="card topic-card">
+          <div
+            id="topic-card-body"
+            class="topic-card-body card-body text-break text-wrap"
+            role="textbox"
+            contenteditable="true"
+            tabindex="0"
+          >
+            <span id="topic-card-placeholder"> Что будем отпускать? </span>
+          </div>
+          <button id="clear-button" class="btn btn-sm clear-button d-none">
+            <!-- ✗ -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              fill="currentColor"
+              class="bi bi-x"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="toolbox">
+          <button
+            id="settings-button"
+            class="btn btn-sm settings-button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#settings"
+            aria-controls="settings"
+          >
+            ⚙️
+          </button>
+
+          <div class="counter-container">
+            <span
+              id="counter"
+              class="badge text-bg-secondary rounded-pill"
+              role="button"
+            >
+              0
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div id="cat-container" class="img-container">
+        <img
+          id="cat"
+          src="/cat-frames/frame23.png"
+          alt="Кот сидит и кидает камни"
+          class="cat"
+        />
+        <div>
+          <img
+            id="cat"
+            src="/cat-frames/frame28.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame33.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame38.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame43.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame48.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame53.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame58.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame63.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame68.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame73.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame78.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame83.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame88.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame93.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame98.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame103.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame108.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame113.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame2.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame7.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame12.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame17.png"
+            class="d-none"
+            loading="lazy"
+          />
+          <img
+            id="cat"
+            src="/cat-frames/frame22.png"
+            class="d-none"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-    crossorigin="anonymous"></script>
-  <script type="module" src="./index.js"></script>
-  <script type="module" src="./src/music/music-controller.js"></script>
-  <script type="module" src="./src/animation/animation-speed-controller.js"></script>
-  <script type="module" src="./src/topic-card/topic-card-controller.js"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./src/music/music-controller.js"></script>
+    <script
+      type="module"
+      src="./src/animation/animation-speed-controller.js"
+    ></script>
+    <script
+      type="module"
+      src="./src/topic-card/topic-card-controller.js"
+    ></script>
+  </body>
 </html>

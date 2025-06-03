@@ -89,8 +89,12 @@ body {
 
 .clear-button {
   position: absolute;
-  right: 0.5rem;
+  right: 4px;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
 }
 
 .img-container {
