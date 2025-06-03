@@ -1,8 +1,11 @@
+@import "bootstrap/scss/bootstrap";
+
 body {
   margin: 0;
-  color: var(--tg-theme-text-color);
-  background-color: var(--tg-theme-bg-color);
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -17,11 +20,6 @@ body {
   transform: rotate(-45deg);
   transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: 1;
-}
-
-.music-button.playing {
-  right: calc(-0.25em + 8px);
-  bottom: calc(-0.35em + 8px);
 }
 
 .content {
@@ -43,59 +41,14 @@ body {
   justify-content: space-between;
 }
 
-.settings-button {
-  padding: 0;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1em;
-}
-
 .counter-container {
   display: flex;
   align-items: center;
 }
 
-.topic-card {
-  position: relative;
-  max-height: 82px;
-  min-width: 300px;
-  padding: 0.5rem;
-  gap: 4px;
-  flex-direction: row;
-  align-items: center;
-  overflow: hidden;
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 600;
-  background-color: var(--tg-theme-bg-color);
-  border-color: var(--bs-btn-active-border-color);
-  border-radius: 0;
-  border-width: 0;
-  border-bottom-width: 1px;
-}
-
-.topic-card-body {
-  padding: 0;
-  color: var(--tg-theme-text-color);
-  outline: none;
-}
-
-#topic-card-placeholder {
-  opacity: 0.6;
-}
-
-.clear-button {
-  position: absolute;
-  right: 0.5rem;
-  padding: 0;
-}
-
 .img-container {
   margin-top: 20px;
-  padding: 0 0 3rem;
+  padding: 0 0 48px;
   position: relative;
   width: 100%;
   display: flex;
@@ -118,9 +71,70 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid;
 }
 
 .setting-section h6 {
   margin-bottom: 0;
+}
+
+.music-button {
+  position: fixed;
+  bottom: calc(-0.5em + 8px);
+  right: calc(-0.4em + 8px);
+  padding: 0;
+  display: flex;
+  font-size: 1.8em;
+  transform: rotate(-45deg);
+  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 1;
+}
+
+.music-button.playing {
+  right: calc(-0.25em + 8px);
+  bottom: calc(-0.35em + 8px);
+}
+
+.topic-card {
+  position: relative;
+  max-height: 82px;
+  min-width: 300px;
+  padding: 0.5rem;
+  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0;
+  border-width: 0;
+  border-bottom-width: 1px;
+}
+
+.topic-card-body {
+  padding: 0;
+  outline: none;
+}
+
+#topic-card-placeholder {
+  opacity: 0.6;
+}
+
+.clear-button {
+  position: absolute;
+  right: 4px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+}
+
+.settings-button {
+  padding: 0;
+  width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

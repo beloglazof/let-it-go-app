@@ -3,15 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "vite --port 3801",
+    "start": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 3801"
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "Slava Beloglazov",
   "license": "ISC",
   "description": "Just let it go",
   "devDependencies": {
-    "vite": "^6.0.11"
+    "sass": "^1.89.1",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.6"
   }
 }

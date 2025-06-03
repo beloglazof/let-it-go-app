@@ -33,7 +33,7 @@ topicCardBodyEl.addEventListener('blur', (event) => {
 
 topicCardBodyEl.addEventListener('input', () => {
   clearButtonEl.classList.remove('d-none');
-  topicCardEl.style.paddingRight = 'calc(0.5rem + 18px)';
+  topicCardEl.style.paddingRight = '28px';
 });
 
 clearButtonEl.addEventListener('click', () => {

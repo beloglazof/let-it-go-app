@@ -1,6 +1,12 @@
 import { animationStateStore } from './animation-store';
 import { FRAMES } from '../constants';
 
+// prelaod images
+FRAMES.forEach((frame) => {
+  const img = new Image();
+  img.src = `/cat-frames/${frame}`;
+});
+
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
