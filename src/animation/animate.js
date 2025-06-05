@@ -1,10 +1,16 @@
 import { animationStateStore } from './animation-store';
 import { FRAMES } from '../constants';
 
+const catContainerEl = document.getElementById('cat-container');
 // prelaod images
-FRAMES.forEach((frame) => {
-  const img = new Image();
+FRAMES.forEach((frame, index) => {
+  // skip first because it's already loaded
+  if (index === 0) return;
+
+  const img = new Image(512, 512);
   img.src = `/cat-frames/${frame}`;
+  img.classList.add('d-none');
+  catContainerEl.append(img);
 });
 
 function sleep(ms) {
