@@ -12,8 +12,6 @@ export default {
       manifest: false,
       registerType: 'autoUpdate',
       includeAssets: [
-        'otpuskaesh.mp3',
-        'stone-fall.mp3',
         'cat-frames/frame23.svg',
         'cat-frames/frame28.svg',
         'cat-frames/frame33.svg',
