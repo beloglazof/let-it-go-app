@@ -19,7 +19,7 @@ function getPublicPathTo(filePath) {
   return url;
 }
 
-const sound = new Audio(getPublicPathTo(`stone-fall.MP3`));
+const sound = new Audio(getPublicPathTo(`stone-fall.mp3`));
 
 export async function animate(catEl, animationSpeed, withSound) {
   animationStateStore.playstart();

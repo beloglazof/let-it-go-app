@@ -1,3 +1,5 @@
+import { registerSW } from 'virtual:pwa-register';
+
 import { AnimationState } from './src/constants';
 import { animate } from './src/animation/animate';
 import {
@@ -11,6 +13,8 @@ import './src/topic-card/topic-card-controller';
 import './src/music/music-controller';
 import './src/animation/animation-speed-controller';
 import './styles.scss';
+
+registerSW({ immediate: true });
 
 const catEl = document.getElementById('cat');
 const catContainerEl = document.getElementById('cat-container');
