@@ -35,7 +35,7 @@ export default {
       ],
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      devOptions: { enabled: true },
+      devOptions: { enabled: false },
     }),
   ],
   // Optional: Silence Sass deprecation warnings. See note below.
