@@ -11,6 +11,7 @@ import './src/topic-card/topic-card-controller';
 import './src/music/music-controller';
 import './src/animation/animation-speed-controller';
 import './styles.scss';
+import './src/campfire.scss'
 
 const catEl = document.getElementById('cat');
 const catContainerEl = document.getElementById('cat-container');
