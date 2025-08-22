@@ -15,7 +15,10 @@ import './src/campfire.scss'
 
 const catEl = document.getElementById('cat');
 const catContainerEl = document.getElementById('cat-container');
-const soundStatus = document.getElementById('sound-status');
+const soundCheckbox = document.getElementById('sound-checkbox');
+const campfireCheckbox = document.getElementById('campfire-checkbox');
+const campfire = document.getElementById('campfire');
+
 const preferColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
 function setColorTheme() {
@@ -31,18 +34,28 @@ function letGo() {
     return;
   }
 
-  const withSound = soundStatus.checked;
+  const withSound = soundCheckbox.checked;
 
   animate(catEl, animationSpeedStore.speed, withSound);
   incCounter();
 }
 
 catContainerEl.addEventListener('click', letGo);
+
 document.addEventListener('keydown', (event) => {
   if (event.key === ' ') {
     letGo();
   }
 });
+
 preferColorScheme.addEventListener('change', () => {
   setColorTheme();
 });
+
+campfireCheckbox.addEventListener('change', (event) => {
+  if (event.target.checked) {
+    campfire.classList.remove('d-none')
+  } else {
+    campfire.classList.add('d-none')
+  }
+})
