@@ -5,6 +5,8 @@ function roundSpeed(value, decimalPlaces = 3) {
   return Math.round((value + Number.EPSILON) * multiplier) / multiplier;
 }
 
+const animationEndEvent = new Event('animationEnd')
+
 export const animationStateStore = {
   state: AnimationState.Idle,
   playstart: function () {
@@ -12,6 +14,7 @@ export const animationStateStore = {
   },
   playend: function () {
     this.state = AnimationState.Idle;
+    document.dispatchEvent(animationEndEvent);
   },
 };
 

@@ -10,14 +10,14 @@ import 'bootstrap/js/dist/offcanvas';
 import './src/topic-card/topic-card-controller';
 import './src/music/music-controller';
 import './src/animation/animation-speed-controller';
+import './src/campfire/campfire-controller'
+
 import './styles.scss';
-import './src/campfire.scss'
+import './src/campfire/campfire.scss'
 
 const catEl = document.getElementById('cat');
 const catContainerEl = document.getElementById('cat-container');
 const soundCheckbox = document.getElementById('sound-checkbox');
-const campfireCheckbox = document.getElementById('campfire-checkbox');
-const campfire = document.getElementById('campfire');
 
 const preferColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -51,11 +51,3 @@ document.addEventListener('keydown', (event) => {
 preferColorScheme.addEventListener('change', () => {
   setColorTheme();
 });
-
-campfireCheckbox.addEventListener('change', (event) => {
-  if (event.target.checked) {
-    campfire.classList.remove('d-none')
-  } else {
-    campfire.classList.add('d-none')
-  }
-})
