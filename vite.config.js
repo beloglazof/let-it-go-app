@@ -38,7 +38,6 @@ export default {
       devOptions: { enabled: false },
     }),
   ],
-  // Optional: Silence Sass deprecation warnings. See note below.
   css: {
     preprocessorOptions: {
       scss: {

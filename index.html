@@ -59,7 +59,7 @@
       </div>
       <div class="offcanvas-body">
         <div class="setting-section">
-          <h6>Звук</h6>
+          <label for="sound-checkbox">Звук</label>
           <div class="form-check form-switch">
             <input
               class="form-check-input"
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="setting-section">
-          <h6>🔥</h6>
+          <label for="campfire-checkbox">🔥</label>
           <div class="form-check form-switch">
             <input
               class="form-check-input"
@@ -82,7 +82,7 @@
           </div>
         </div>
         <div class="setting-section">
-          <h6>Скорость</h6>
+          <label>Скорость</label>
           <div
             class="speed-buttons"
             role="group"
@@ -98,36 +98,52 @@
 
     <div class="content">
       <div>
-        <div id="topic-card" class="card topic-card">
-          <div
-            id="topic-card-body"
-            class="topic-card-body card-body text-break text-wrap"
-            role="textbox"
-            contenteditable="true"
-            tabindex="0"
-          >
-            <span id="topic-card-placeholder"> Что будем отпускать? </span>
-          </div>
-          <button id="clear-button" class="btn btn-sm clear-button d-none">
+        <div class="topic-slider">
+          <button id="prev-topic" class="btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="100%"
-              height="100%"
+              width="16"
+              height="16"
               fill="currentColor"
-              class="bi bi-x"
+              class="bi bi-chevron-left"
               viewBox="0 0 16 16"
             >
               <path
-                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                fill-rule="evenodd"
+                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
               />
             </svg>
           </button>
+          <button id="next-topic" class="btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-right"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
+              />
+            </svg>
+          </button>
+          <div id="topic-card" class="card topic-card">
+            <div
+              id="topic-card-body"
+              class="topic-card-body card-body"
+              data-bs-toggle="modal"
+              data-bs-target="#topics-modal"
+            >
+              <span id="topic-card-placeholder">Что будем отпускать?</span>
+            </div>
+          </div>
         </div>
-
         <div class="toolbox">
           <button
             id="settings-button"
-            class="btn btn-sm settings-button"
+            class="btn btn-sm toolbox-button"
             data-bs-toggle="offcanvas"
             data-bs-target="#settings"
             aria-controls="settings"
@@ -147,14 +163,17 @@
           </button>
 
           <div class="counter-container">
-            <span
+            <button
               id="counter"
-              class="badge text-bg-secondary rounded-pill"
-              role="button"
+              type="button"
+              class="btn btn-sm btn-outline-secondary badge rounded-pill"
+              style="--bs-badge-color: var(--bs-secondary-color)"
             >
               0
-            </span>
+            </button>
           </div>
+
+          <small id="topics-counter" class="font-monospace d-none"></small>
         </div>
       </div>
 
@@ -171,6 +190,66 @@
           <div class="flame outer"></div>
           <div class="flame mid"></div>
           <div class="flame core"></div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal"
+      id="topics-modal"
+      tabindex="-1"
+      aria-labelledby="topicsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="topicsModalLabel">
+              Что будем отпускать?
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Закрыть"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="new-topic-form">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  id="new-topic-input"
+                  class="form-control"
+                  placeholder="Новая тема"
+                />
+                <button
+                  class="btn btn-outline-primary"
+                  id="add-topic-button"
+                  type="submit"
+                >
+                  Добавить
+                </button>
+              </div>
+            </form>
+            <button
+              type="button"
+              class="btn btn-outline-danger btn-sm w-100"
+              id="clear-topics-button"
+            >
+              Удалить все темы
+            </button>
+            <ul id="topics-list" class="list-group mt-3"></ul>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-success w-100"
+              data-bs-dismiss="modal"
+            >
+              Готово
+            </button>
+          </div>
         </div>
       </div>
     </div>
