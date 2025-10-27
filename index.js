@@ -1,30 +1,31 @@
-import { AnimationState } from './src/constants';
-import { animate } from './src/animation/animate';
+import { AnimationState } from "./src/constants";
+import { animate } from "./src/animation/animate";
 import {
   animationStateStore,
   animationSpeedStore,
-} from './src/animation/animation-store';
-import { incCounter } from './src/counter/counter-controller';
+} from "./src/animation/animation-store";
+import { incCounter } from "./src/counter/counter-controller";
 
-import 'bootstrap/js/dist/offcanvas';
-import './src/topic-card/topic-card-controller';
-import './src/music/music-controller';
-import './src/animation/animation-speed-controller';
-import './src/campfire/campfire-controller'
+import "bootstrap/js/dist/offcanvas";
+import "bootstrap/js/dist/modal";
+import "./src/topics/topics-controller";
+import "./src/music/music-controller";
+import "./src/animation/animation-speed-controller";
+import "./src/campfire/campfire-controller";
 
-import './styles.scss';
-import './src/campfire/campfire.scss'
+import "./styles.scss";
+import "./src/campfire/campfire.scss";
 
-const catEl = document.getElementById('cat');
-const catContainerEl = document.getElementById('cat-container');
-const soundCheckbox = document.getElementById('sound-checkbox');
+const catEl = document.getElementById("cat");
+const catContainerEl = document.getElementById("cat-container");
+const soundCheckbox = document.getElementById("sound-checkbox");
 
-const preferColorScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const preferColorScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 function setColorTheme() {
   document.documentElement.dataset.bsTheme = preferColorScheme.matches
-    ? 'dark'
-    : 'light';
+    ? "dark"
+    : "light";
 }
 
 setColorTheme();
@@ -40,14 +41,14 @@ function letGo() {
   incCounter();
 }
 
-catContainerEl.addEventListener('click', letGo);
+catContainerEl.addEventListener("click", letGo);
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === ' ') {
+document.addEventListener("keydown", (event) => {
+  if (event.key === " ") {
     letGo();
   }
 });
 
-preferColorScheme.addEventListener('change', () => {
+preferColorScheme.addEventListener("change", () => {
   setColorTheme();
 });

@@ -48,7 +48,7 @@ body {
 
 .img-container {
   margin-top: 20px;
-  margin-bottom: 48px;
+  padding-bottom: 48px;
   position: relative;
   width: 100%;
   max-height: 512px;
@@ -96,21 +96,34 @@ body {
   bottom: calc(-0.35em + 8px);
 }
 
-.topic-card {
+.topic-slider {
   position: relative;
-  max-height: 82px;
-  min-width: 300px;
+}
+
+.topic-card {
+  max-height: 100px;
+  width: 320px;
   padding: 0.5rem;
-  gap: 4px;
-  flex-direction: row;
-  align-items: center;
-  overflow: hidden;
   text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
   border-radius: 0;
   border-width: 0;
   border-bottom-width: 1px;
+}
+
+#next-topic,
+#prev-topic {
+  display: none;
+  position: absolute;
+  top: calc(50% - 19px);
+}
+
+#next-topic {
+  right: -42px;
+}
+#prev-topic {
+  left: -42px;
 }
 
 .topic-card-body {
@@ -132,10 +145,20 @@ body {
   width: 24px;
 }
 
-.settings-button {
+.toolbox-button {
   padding: 0;
   width: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.topic-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.delete-topic-button {
+  margin-left: auto;
 }
