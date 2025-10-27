@@ -49,11 +49,13 @@ function renderTopicsList() {
 }
 
 function renderTopics() {
+  nextTopicButton.style.display = "";
+  prevTopicButton.style.display = "";
+  topicsCounter.classList.add("d-none");
+  topicsCounter.textContent = "";
+
   if (topics.length === 0) {
     topicCardBody.innerHTML = `<span id="topic-card-placeholder">Что будем отпускать?</span>`;
-    nextTopicButton.style.display = "";
-    prevTopicButton.style.display = "";
-    topicsCounter.textContent = "";
 
     return;
   }
@@ -61,6 +63,7 @@ function renderTopics() {
   if (topics.length > 1) {
     nextTopicButton.style.display = "block";
     prevTopicButton.style.display = "block";
+    topicsCounter.classList.remove("d-none");
     topicsCounter.textContent = `${currentTopicIndex + 1}/${topics.length}`;
   }
 
