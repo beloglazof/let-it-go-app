@@ -117,13 +117,14 @@ body {
   display: none;
   position: absolute;
   top: calc(50% - 19px);
+  z-index: 1;
 }
 
 #next-topic {
-  right: -42px;
+  right: -21px;
 }
 #prev-topic {
-  left: -42px;
+  left: -21px;
 }
 
 .topic-card-body {

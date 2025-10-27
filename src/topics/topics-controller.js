@@ -11,6 +11,7 @@ const topicCardBody = document.getElementById("topic-card-body");
 const topicCardEl = document.getElementById("topic-card");
 const prevTopicButton = document.getElementById("prev-topic");
 const nextTopicButton = document.getElementById("next-topic");
+const topicsCounter = document.getElementById("topics-counter");
 
 function autoResizeTopicCardFont(
   element = topicCardEl,
@@ -50,14 +51,17 @@ function renderTopicsList() {
 function renderTopics() {
   if (topics.length === 0) {
     topicCardBody.innerHTML = `<span id="topic-card-placeholder">Что будем отпускать?</span>`;
-    nextTopicButton.style.display = '';
-    prevTopicButton.style.display = '';
+    nextTopicButton.style.display = "";
+    prevTopicButton.style.display = "";
+    topicsCounter.textContent = "";
+
     return;
   }
 
   if (topics.length > 1) {
-    nextTopicButton.style.display = 'block';
-    prevTopicButton.style.display = 'block';
+    nextTopicButton.style.display = "block";
+    prevTopicButton.style.display = "block";
+    topicsCounter.textContent = `${currentTopicIndex + 1}/${topics.length}`;
   }
 
   topicCardBody.innerHTML = `
@@ -72,12 +76,14 @@ function renderTopics() {
 prevTopicButton.onclick = () => {
   currentTopicIndex = (currentTopicIndex - 1 + topics.length) % topics.length;
   document.getElementById("topic-text").textContent = topics[currentTopicIndex];
+  topicsCounter.textContent = `${currentTopicIndex + 1}/${topics.length}`;
   autoResizeTopicCardFont();
 };
 
 nextTopicButton.onclick = () => {
   currentTopicIndex = (currentTopicIndex + 1) % topics.length;
   document.getElementById("topic-text").textContent = topics[currentTopicIndex];
+  topicsCounter.textContent = `${currentTopicIndex + 1}/${topics.length}`;
   autoResizeTopicCardFont();
 };
 
@@ -117,6 +123,7 @@ newTopicInput.addEventListener("paste", (event) => {
 // handle delete topic
 topicsList.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-topic-button")) {
+    currentTopicIndex = 0;
     const idx = Number(e.target.dataset.idx);
     topics.splice(idx, 1);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
@@ -126,6 +133,7 @@ topicsList.addEventListener("click", (e) => {
 
 clearTopicsButton.addEventListener("click", () => {
   topics = [];
+  currentTopicIndex = 0;
   localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
   renderTopicsList();
 });
@@ -135,7 +143,6 @@ topicsModal.addEventListener("shown.bs.modal", () => {
 });
 
 topicsModal.addEventListener("hidden.bs.modal", () => {
-  currentTopicIndex = 0;
   renderTopics();
 });
 
