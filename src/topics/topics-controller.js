@@ -123,6 +123,12 @@ newTopicInput.addEventListener("paste", (event) => {
   }
 });
 
+newTopicInput.addEventListener("keydown", (event) => {
+  if (event.key === " ") {
+    event.stopPropagation();
+  }
+});
+
 // handle delete topic
 topicsList.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-topic-button")) {
