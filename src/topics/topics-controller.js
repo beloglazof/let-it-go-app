@@ -5,6 +5,7 @@ let currentTopicIndex = 0;
 const topicsModal = document.getElementById("topics-modal");
 const newTopicForm = document.getElementById("new-topic-form");
 const newTopicInput = document.getElementById("new-topic-input");
+const topicsListContainer = document.getElementById("topics-list-container");
 const topicsList = document.getElementById("topics-list");
 const clearTopicsButton = document.getElementById("clear-topics-button");
 const topicCardBody = document.getElementById("topic-card-body");
@@ -32,6 +33,12 @@ function autoResizeTopicCardFont(
 }
 
 function renderTopicsList() {
+  topicsListContainer.classList.add("d-none");
+
+  if (topics.length > 0) {
+    topicsListContainer.classList.remove("d-none");
+  }
+
   topicsList.innerHTML = topics
     .map(
       (t, i) =>
