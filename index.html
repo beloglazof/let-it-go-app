@@ -2,10 +2,23 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <title>Просто отпусти это</title>
-    <meta name="description" content="Вместе с котиком :3" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Отпускай вместе с котиком :3" />
+
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#212529"
+      media="(prefers-color-scheme: dark)"
+    />
 
     <link rel="icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -129,13 +142,13 @@
               />
             </svg>
           </button>
-          <div id="topic-card" class="card topic-card">
-            <div
-              id="topic-card-body"
-              class="topic-card-body card-body"
-              data-bs-toggle="modal"
-              data-bs-target="#topics-modal"
-            >
+          <div
+            id="topic-card"
+            class="topic-card"
+            data-bs-toggle="modal"
+            data-bs-target="#topics-modal"
+          >
+            <div id="topic-card-body" class="topic-card-body">
               <span id="topic-card-placeholder">Что будем отпускать?</span>
             </div>
           </div>
@@ -162,18 +175,15 @@
             </svg>
           </button>
 
-          <div class="counter-container">
-            <button
-              id="counter"
-              type="button"
-              class="btn btn-sm btn-outline-secondary badge rounded-pill"
-              style="--bs-badge-color: var(--bs-secondary-color)"
-            >
-              0
-            </button>
-          </div>
+          <button
+            id="counter"
+            type="button"
+            class="btn btn-sm btn-outline-secondary badge rounded-pill stone-counter"
+          >
+            0
+          </button>
 
-          <small id="topics-counter" class="font-monospace d-none"></small>
+          <small id="topics-counter" class="d-none topics-counter"></small>
         </div>
       </div>
 
@@ -214,9 +224,9 @@
               aria-label="Закрыть"
             ></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body topics-modal-body">
             <form id="new-topic-form">
-              <div class="input-group mb-3">
+              <div class="input-group">
                 <input
                   type="text"
                   id="new-topic-input"
@@ -232,23 +242,16 @@
                 </button>
               </div>
             </form>
-            <button
-              type="button"
-              class="btn btn-outline-danger btn-sm w-100"
-              id="clear-topics-button"
-            >
-              Удалить все темы
-            </button>
-            <ul id="topics-list" class="list-group mt-3"></ul>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-success w-100"
-              data-bs-dismiss="modal"
-            >
-              Готово
-            </button>
+            <div id="topics-list-container" class="topics-list-container d-none">
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                id="clear-topics-button"
+              >
+                Удалить все темы
+              </button>
+              <ul id="topics-list" class="list-group"></ul>
+            </div>
           </div>
         </div>
       </div>
