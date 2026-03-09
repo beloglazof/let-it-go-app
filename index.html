@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
@@ -79,6 +79,18 @@
               type="checkbox"
               role="switch"
               id="sound-checkbox"
+              checked
+            />
+          </div>
+        </div>
+        <div class="setting-section">
+          <label for="haptic-feedback-checkbox">Тактильный отклик</label>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="haptic-feedback-checkbox"
               checked
             />
           </div>
@@ -242,7 +254,10 @@
                 </button>
               </div>
             </form>
-            <div id="topics-list-container" class="topics-list-container d-none">
+            <div
+              id="topics-list-container"
+              class="topics-list-container d-none"
+            >
               <button
                 type="button"
                 class="btn btn-outline-danger btn-sm"
