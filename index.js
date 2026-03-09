@@ -1,9 +1,6 @@
 import { AnimationState } from "./src/constants";
 import { animate } from "./src/animation/animate";
-import {
-  animationStateStore,
-  animationSpeedStore,
-} from "./src/animation/animation-store";
+import { animationStateStore } from "./src/animation/animation-store";
 import { incCounter } from "./src/counter/counter-controller";
 
 import "bootstrap/js/dist/offcanvas";
@@ -19,6 +16,9 @@ import "./src/campfire/campfire.scss";
 const catEl = document.getElementById("cat");
 const catContainerEl = document.getElementById("cat-container");
 const soundCheckbox = document.getElementById("sound-checkbox");
+const hapticFeedbackCheckbox = document.getElementById(
+  "haptic-feedback-checkbox",
+);
 
 const preferColorScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -36,8 +36,9 @@ function letGo() {
   }
 
   const withSound = soundCheckbox.checked;
+  const withHapticFeedback = hapticFeedbackCheckbox.checked;
 
-  animate(catEl, animationSpeedStore.speed, withSound);
+  animate(catEl, { withSound, withHapticFeedback });
   incCounter();
 }
 

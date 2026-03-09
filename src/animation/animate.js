@@ -1,9 +1,10 @@
-import { animationStateStore } from './animation-store';
-import { FRAMES } from '../constants';
+import { animationStateStore, animationSpeedStore } from "./animation-store";
+import { FRAMES } from "../constants";
+import { WebHaptics, defaultPatterns } from "web-haptics";
 
 const extension = {
-  png: 'png',
-  svg: 'svg',
+  png: "png",
+  svg: "svg",
 };
 
 function sleep(ms) {
@@ -12,7 +13,7 @@ function sleep(ms) {
 
 function getPublicPathTo(filePath) {
   const envBaseUrl = import.meta.env.BASE_URL;
-  const baseUrl = envBaseUrl.endsWith('/') ? envBaseUrl : `${envBaseUrl}/`;
+  const baseUrl = envBaseUrl.endsWith("/") ? envBaseUrl : `${envBaseUrl}/`;
 
   const url = `${baseUrl}${filePath}`;
 
@@ -20,21 +21,38 @@ function getPublicPathTo(filePath) {
 }
 
 const sound = new Audio(getPublicPathTo(`stone-fall.MP3`));
+const haptics = new WebHaptics();
 
-export async function animate(catEl, animationSpeed, withSound) {
+export async function animate(catEl, options) {
   animationStateStore.playstart();
+
+  const { withSound, withHapticFeedback } = options || {};
+
+  const animationSpeed = animationSpeedStore.speed;
+  const animationDurationInMs = FRAMES.length * animationSpeed;
 
   if (withSound) {
     sound.pause();
     sound.currentTime = 0;
 
-    const animationDurationInMs = FRAMES.length * animationSpeed;
     const soundDurationInMs = sound.duration * 1000;
     const soundStartDelay = animationDurationInMs - soundDurationInMs;
+
     const timeoutId = setTimeout(() => {
       sound.play();
       clearTimeout(timeoutId);
     }, soundStartDelay);
+  }
+
+  if (withHapticFeedback) {
+    const hapticFeedbackDurationInMs = 100;
+    const hapticFeedbackDelay =
+      animationDurationInMs - hapticFeedbackDurationInMs;
+
+    const timeoutId = setTimeout(() => {
+      haptics.trigger(defaultPatterns.success);
+      clearTimeout(timeoutId);
+    }, hapticFeedbackDelay);
   }
 
   for (let i = 0; i < FRAMES.length; i++) {
