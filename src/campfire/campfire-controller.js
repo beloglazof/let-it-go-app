@@ -1,6 +1,12 @@
 const campfire = document.getElementById('campfire');
 const campfireCheckbox = document.getElementById('campfire-checkbox');
 
+const CAMPFIRE_SETTING_KEY = "withCampfire";
+const storedCampfireSetting = localStorage.getItem(CAMPFIRE_SETTING_KEY);
+campfireCheckbox.checked = storedCampfireSetting
+  ? storedCampfireSetting === "true"
+  : false;
+
 function getFireCenter() {
   const r = campfire.getBoundingClientRect();
   return { x: r.left + r.width / 2, y: r.top + r.height * 0.55 };

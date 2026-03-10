@@ -7,7 +7,8 @@ import "bootstrap/js/dist/offcanvas";
 import "bootstrap/js/dist/modal";
 import "./src/topics/topics-controller";
 import "./src/music/music-controller";
-import "./src/animation/animation-speed-controller";
+import "./src/settings/animation-speed-controller";
+import "./src/settings/settings-controller";
 import "./src/campfire/campfire-controller";
 
 import "./styles.scss";
