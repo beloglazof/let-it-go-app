@@ -1,4 +1,4 @@
-import { animationSpeedStore } from './animation-store';
+import { animationSpeedStore } from '../animation/animation-store';
 
 const SPEED_STORAGE_KEY = 'animationSpeed';
 const SpeedKey = {
