@@ -17,13 +17,23 @@ svg {
 
 .content {
   position: relative;
-  margin-top: 80px;
+  padding-top: 80px;
   max-width: 512px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 24px;
+}
+
+.timer {
+  position: absolute;
+  top: 40px;
+  min-width: 48px;
+  color: var(--bs-body-color);
+  font-size: 1.2rem;
+  font-family: monospace;
+  text-align: center;
 }
 
 // Music Btn
@@ -104,16 +114,6 @@ svg {
   --bs-badge-color: var(--bs-body-color);
 }
 
-.timer {
-  position: absolute;
-  top: 10px;
-  min-width: 48px;
-  color: var(--bs-body-color);
-  font-size: 1.2rem;
-  font-family: monospace;
-  text-align: center;
-}
-
 .topics-counter {
   color: var(--bs-tertiary-color);
 }
@@ -149,7 +149,7 @@ svg {
 }
 
 .setting-section label {
-  flex: 1
+  flex: 1;
 }
 
 // Topics Modal
