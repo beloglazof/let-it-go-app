@@ -104,6 +104,16 @@ svg {
   --bs-badge-color: var(--bs-body-color);
 }
 
+.timer {
+  position: absolute;
+  top: 10px;
+  min-width: 48px;
+  color: var(--bs-body-color);
+  font-size: 1.2rem;
+  font-family: monospace;
+  text-align: center;
+}
+
 .topics-counter {
   color: var(--bs-tertiary-color);
 }

@@ -2,6 +2,7 @@ import { AnimationState } from "./src/constants";
 import { animate } from "./src/animation/animate";
 import { animationStateStore } from "./src/animation/animation-store";
 import { incCounter } from "./src/counter/counter-controller";
+import { pingTimer } from "./src/timer/timer-controller";
 
 import "bootstrap/js/dist/offcanvas";
 import "bootstrap/js/dist/modal";
@@ -35,6 +36,8 @@ function letGo() {
   if (!catEl || animationStateStore.state === AnimationState.Play) {
     return;
   }
+
+  pingTimer();
 
   const withSound = soundCheckbox.checked;
   const withHapticFeedback = hapticFeedbackCheckbox.checked;
