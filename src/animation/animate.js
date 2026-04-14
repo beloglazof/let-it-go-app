@@ -1,4 +1,5 @@
-import { animationStateStore, animationSpeedStore } from "./animation-store";
+import { animationStateStore } from "./animation-store";
+import { animationSpeedStore } from "../settings/animation-speed-store";
 import { FRAMES } from "../constants";
 import { WebHaptics, defaultPatterns } from "web-haptics";
 
