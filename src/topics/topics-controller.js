@@ -114,10 +114,16 @@ newTopicForm.addEventListener("submit", (event) => {
   const value = newTopicInput.value.trim();
 
   if (value) {
+    const wasEmpty = topics.length === 0;
     topics.push(value);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     newTopicInput.value = "";
     renderTopicsList();
+    
+    if (wasEmpty) {
+      saveSession();
+      startNewSession(value);
+    }
   }
 });
 
@@ -132,11 +138,17 @@ newTopicInput.addEventListener("paste", (event) => {
     .filter(Boolean);
 
   if (lines.length > 1) {
+    const wasEmpty = topics.length === 0;
     topics.push(...lines);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     renderTopicsList();
     newTopicInput.value = "";
     newTopicInput.blur();
+    
+    if (wasEmpty) {
+      saveSession();
+      startNewSession(lines[0]);
+    }
   } else {
     newTopicInput.value = pastedText;
   }
@@ -151,15 +163,29 @@ newTopicInput.addEventListener("keydown", (event) => {
 // handle delete topic
 topicsList.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-topic-button")) {
-    currentTopicIndex = 0;
     const idx = Number(e.target.dataset.idx);
+    const deletingCurrentTopic = idx === currentTopicIndex;
+    
+    if (deletingCurrentTopic) {
+      saveSession();
+    }
+    
     topics.splice(idx, 1);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     renderTopicsList();
+    
+    if (topics.length === 0) {
+      currentTopicIndex = 0;
+      setCurrentTopic(null);
+    } else if (deletingCurrentTopic) {
+      currentTopicIndex = Math.min(currentTopicIndex, topics.length - 1);
+      startNewSession(topics[currentTopicIndex]);
+    }
   }
 });
 
 clearTopicsButton.addEventListener("click", () => {
+  saveSession();
   topics = [];
   currentTopicIndex = 0;
   localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));

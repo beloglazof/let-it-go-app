@@ -2,18 +2,20 @@ import { timerHistoryStore } from "./timer-history-store.js";
 
 function formatTime(milliseconds) {
   const seconds = Math.floor(milliseconds / 1000);
+  const secondsOnly = seconds % 60;
   const minutes = Math.floor(seconds / 60);
+  const minutesOnly = minutes % 60;
   const hours = Math.floor(minutes / 60);
 
   if (hours > 0) {
-    return `${hours}ч ${minutes}м ${seconds}с`;
+    return `${hours}ч ${minutesOnly}м ${secondsOnly}с`;
   }
 
   if (minutes > 0) {
-    return `${minutes}м ${seconds}с`;
+    return `${minutesOnly}м ${secondsOnly}с`;
   }
 
-  return `${seconds}с`;
+  return `${secondsOnly}с`;
 }
 
 function formatDate(dateString) {
