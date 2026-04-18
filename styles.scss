@@ -26,14 +26,21 @@ svg {
   gap: 24px;
 }
 
-.timer {
+.timer-container {
   position: absolute;
   top: 40px;
+  padding-right: 28px; // compensate timer history btn (toolbox button width + gap)
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.timer {
   min-width: 48px;
   color: var(--bs-body-color);
   font-size: 1.2rem;
   font-family: monospace;
-  text-align: center;
 }
 
 // Music Btn

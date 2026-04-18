@@ -11,6 +11,7 @@ import "./src/music/music-controller";
 import "./src/settings/animation-speed-controller";
 import "./src/settings/settings-controller";
 import "./src/campfire/campfire-controller";
+import "./src/timer/timer-history-controller";
 
 import "./styles.scss";
 import "./src/campfire/campfire.scss";
