@@ -1,3 +1,9 @@
+import {
+  saveSession,
+  startNewSession,
+  setCurrentTopic,
+} from "../timer/timer-controller.js";
+
 const TOPICS_KEY = "letitgo_topics";
 let topics = JSON.parse(localStorage.getItem(TOPICS_KEY)) || [];
 let currentTopicIndex = 0;
@@ -17,7 +23,7 @@ const topicsCounter = document.getElementById("topics-counter");
 function autoResizeTopicCardFont(
   element = topicCardEl,
   minFontSize = 0.5,
-  maxFontSize = 1.6
+  maxFontSize = 1.6,
 ) {
   let fontSize = maxFontSize;
   element.style.fontSize = fontSize + "rem";
@@ -50,7 +56,7 @@ function renderTopicsList() {
               <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
             </svg>
           </button>
-        </li>`
+        </li>`,
     )
     .join("");
 }
@@ -85,14 +91,20 @@ function renderTopics() {
 
 prevTopicButton.onclick = () => {
   currentTopicIndex = (currentTopicIndex - 1 + topics.length) % topics.length;
-  document.getElementById("topic-text").textContent = topics[currentTopicIndex];
+  const newTopic = topics[currentTopicIndex];
+  saveSession();
+  startNewSession(newTopic);
+  document.getElementById("topic-text").textContent = newTopic;
   topicsCounter.textContent = `${currentTopicIndex + 1}/${topics.length}`;
   autoResizeTopicCardFont();
 };
 
 nextTopicButton.onclick = () => {
   currentTopicIndex = (currentTopicIndex + 1) % topics.length;
-  document.getElementById("topic-text").textContent = topics[currentTopicIndex];
+  const newTopic = topics[currentTopicIndex];
+  saveSession();
+  startNewSession(newTopic);
+  document.getElementById("topic-text").textContent = newTopic;
   topicsCounter.textContent = `${currentTopicIndex + 1}/${topics.length}`;
   autoResizeTopicCardFont();
 };
@@ -102,17 +114,23 @@ newTopicForm.addEventListener("submit", (event) => {
   const value = newTopicInput.value.trim();
 
   if (value) {
+    const wasEmpty = topics.length === 0;
     topics.push(value);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     newTopicInput.value = "";
     renderTopicsList();
+    
+    if (wasEmpty) {
+      saveSession();
+      startNewSession(value);
+    }
   }
 });
 
 newTopicInput.addEventListener("paste", (event) => {
   event.preventDefault();
   const pastedText = (event.clipboardData || window.clipboardData).getData(
-    "text"
+    "text",
   );
   const lines = pastedText
     .split(/\r?\n/)
@@ -120,11 +138,17 @@ newTopicInput.addEventListener("paste", (event) => {
     .filter(Boolean);
 
   if (lines.length > 1) {
+    const wasEmpty = topics.length === 0;
     topics.push(...lines);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     renderTopicsList();
     newTopicInput.value = "";
     newTopicInput.blur();
+    
+    if (wasEmpty) {
+      saveSession();
+      startNewSession(lines[0]);
+    }
   } else {
     newTopicInput.value = pastedText;
   }
@@ -139,19 +163,34 @@ newTopicInput.addEventListener("keydown", (event) => {
 // handle delete topic
 topicsList.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-topic-button")) {
-    currentTopicIndex = 0;
     const idx = Number(e.target.dataset.idx);
+    const deletingCurrentTopic = idx === currentTopicIndex;
+    
+    if (deletingCurrentTopic) {
+      saveSession();
+    }
+    
     topics.splice(idx, 1);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     renderTopicsList();
+    
+    if (topics.length === 0) {
+      currentTopicIndex = 0;
+      startNewSession(null);
+    } else if (deletingCurrentTopic) {
+      currentTopicIndex = Math.min(currentTopicIndex, topics.length - 1);
+      startNewSession(topics[currentTopicIndex]);
+    }
   }
 });
 
 clearTopicsButton.addEventListener("click", () => {
+  saveSession();
   topics = [];
   currentTopicIndex = 0;
   localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
   renderTopicsList();
+  startNewSession(null);
 });
 
 topicsModal.addEventListener("shown.bs.modal", () => {
@@ -163,5 +202,8 @@ topicsModal.addEventListener("hidden.bs.modal", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (topics.length > 0) renderTopics();
+  if (topics.length > 0) {
+    renderTopics();
+    setCurrentTopic(topics[currentTopicIndex]);
+  }
 });
