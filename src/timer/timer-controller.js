@@ -12,7 +12,6 @@ let intervalId;
 let pauseTimeoutId;
 let elapsedTime = 0;
 let state = TimerState.Idle;
-let wasSaved = false;
 let currentTopic = null;
 
 function resetTimer() {
@@ -49,14 +48,9 @@ function shedulePause() {
 
   pauseTimeoutId = setTimeout(() => {
     if (elapsedTime > 0) {
-      if (!wasSaved) {
-        timerHistoryStore.addSessionToday(elapsedTime, currentTopic);
-      } else {
-        timerHistoryStore.updateLastSessionToday(elapsedTime, currentTopic);
-      }
+      timerHistoryStore.updateLastSessionToday(elapsedTime, currentTopic);
 
       updateHistoryDisplay();
-      wasSaved = true;
     }
 
     state = TimerState.Pause;
@@ -72,6 +66,10 @@ export function pingTimer() {
 
   if (state === TimerState.Run) {
     return;
+  }
+
+  if (state === TimerState.Idle) {
+    timerHistoryStore.addSessionToday(elapsedTime, currentTopic);
   }
 
   updateTimerDisplay();
@@ -96,12 +94,7 @@ export function setCurrentTopic(topic) {
 
 export function saveSession() {
   if (elapsedTime > 0 && state !== TimerState.Idle) {
-    if (!wasSaved) {
-      timerHistoryStore.addSessionToday(elapsedTime, currentTopic);
-    } else {
-      timerHistoryStore.updateLastSessionToday(elapsedTime, currentTopic);
-    }
-    wasSaved = true;
+    timerHistoryStore.updateLastSessionToday(elapsedTime, currentTopic);
     updateHistoryDisplay();
   }
 }

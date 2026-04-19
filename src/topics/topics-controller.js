@@ -176,7 +176,7 @@ topicsList.addEventListener("click", (e) => {
     
     if (topics.length === 0) {
       currentTopicIndex = 0;
-      setCurrentTopic(null);
+      startNewSession(null);
     } else if (deletingCurrentTopic) {
       currentTopicIndex = Math.min(currentTopicIndex, topics.length - 1);
       startNewSession(topics[currentTopicIndex]);
@@ -190,6 +190,7 @@ clearTopicsButton.addEventListener("click", () => {
   currentTopicIndex = 0;
   localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
   renderTopicsList();
+  startNewSession(null);
 });
 
 topicsModal.addEventListener("shown.bs.modal", () => {
