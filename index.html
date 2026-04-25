@@ -306,7 +306,7 @@
       aria-labelledby="timerHistoryModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="timerHistoryModalLabel">История</h5>
@@ -318,7 +318,10 @@
             ></button>
           </div>
           <div class="modal-body">
-            <ul id="timer-history-list" class="list-group"></ul>
+            <div class="history-layout">
+              <div id="timer-history-calendar" class="history-calendar"></div>
+              <div id="timer-history-day-details" class="history-details"></div>
+            </div>
           </div>
         </div>
       </div>
