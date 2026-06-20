@@ -21,8 +21,8 @@ function smallEmber() {
   const e = document.createElement("div");
   e.style.position = "absolute";
   const c = getFireCenter();
-  e.style.left = c.x - 6 + "px";
-  e.style.top = c.y - 18 + "px";
+  e.style.left = `${c.x - 6}px`;
+  e.style.top = `${c.y - 18}px`;
   e.style.width = "12px";
   e.style.height = "12px";
   e.style.borderRadius = "50%";

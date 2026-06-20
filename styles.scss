@@ -46,20 +46,13 @@ svg {
 // Music Btn
 
 .music-button {
-  position: fixed;
-  bottom: calc(-0.5em + 8px);
-  right: calc(-0.4em + 8px);
+  position: absolute;
+  top: 16px;
+  right: 24px;
   padding: 0;
   display: flex;
-  font-size: 1.8em;
-  transform: rotate(-45deg);
-  transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  font-size: 1em;
   z-index: 1;
-}
-
-.music-button.playing {
-  right: calc(-0.25em + 8px);
-  bottom: calc(-0.35em + 8px);
 }
 
 // Topic
@@ -155,7 +148,7 @@ svg {
   border-bottom: 1px solid var(--bs-border-color);
 }
 
-.setting-section label {
+.setting-section p {
   flex: 1;
 }
 
@@ -338,7 +331,7 @@ svg {
   font-size: 0.95rem;
 }
 
-.topic-item {
+.history-topic-item {
   padding: 6px 0 6px 16px;
   display: flex;
   justify-content: space-between;

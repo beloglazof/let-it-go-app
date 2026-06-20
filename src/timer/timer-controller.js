@@ -1,5 +1,5 @@
-import { timerHistoryStore } from "./timer-history-store.js";
 import { updateHistoryDisplay } from "./timer-history-controller.js";
+import { timerHistoryStore } from "./timer-history-store.js";
 
 const TimerState = {
   Idle: "idle",

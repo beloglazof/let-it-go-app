@@ -51,14 +51,14 @@
   </head>
 
   <body>
+    <!-- biome-ignore lint/a11y/useMediaCaption: There is no need for a caption -->
     <audio id="music" src="/otpuskaesh.MP3" preload="none" loop></audio>
-    <button id="music-button" class="btn music-button">🕺</button>
+    <button type="button" id="music-button" class="btn music-button">🔇</button>
 
     <div
       class="offcanvas offcanvas-start"
       tabindex="-1"
       id="settings"
-      aria-labelledby="settingsLabel"
     >
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="settingsLabel">Настройки</h5>
@@ -78,6 +78,7 @@
               class="form-check-input"
               type="checkbox"
               role="switch"
+              aria-checked="mixed"
               id="sound-checkbox"
             />
           </div>
@@ -89,6 +90,7 @@
               class="form-check-input"
               type="checkbox"
               role="switch"
+              aria-checked="mixed"
               id="haptic-feedback-checkbox"
             />
           </div>
@@ -100,21 +102,20 @@
               class="form-check-input"
               type="checkbox"
               role="switch"
+              aria-checked="mixed"
               id="campfire-checkbox"
             />
           </div>
         </div>
         <div class="setting-section">
-          <label>Скорость</label>
+          <p>Скорость</p>
           <div
             class="speed-buttons"
-            role="group"
-            aria-label="Animation speed button group"
           >
-            <button id="speed-1-button" class="btn btn-sm px-1">1x</button>
-            <button id="speed-2-button" class="btn btn-sm px-1">1.5x</button>
-            <button id="speed-3-button" class="btn btn-sm px-1">2x</button>
-            <button id="speed-4-button" class="btn btn-sm px-1">4x</button>
+            <button type="button" id="speed-1-button" class="btn btn-sm px-1">1x</button>
+            <button type="button" id="speed-2-button" class="btn btn-sm px-1">1.5x</button>
+            <button type="button" id="speed-3-button" class="btn btn-sm px-1">2x</button>
+            <button type="button" id="speed-4-button" class="btn btn-sm px-1">4x</button>
           </div>
         </div>
       </div>
@@ -123,6 +124,7 @@
     <div class="content">
       <div class="timer-container">
         <button
+          type="button"
           id="timer-history-button"
           class="btn btn-sm toolbox-button"
           data-bs-toggle="modal"
@@ -136,6 +138,7 @@
             class="bi bi-clock-history"
             viewBox="0 0 16 16"
           >
+          <title>clock icon</title>
             <path
               d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z"
             />
@@ -151,7 +154,7 @@
       </div>
       <div>
         <div class="topic-slider">
-          <button id="prev-topic" class="btn">
+          <button type="button" id="prev-topic" class="btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -160,13 +163,14 @@
               class="bi bi-chevron-left"
               viewBox="0 0 16 16"
             >
+              <title>left chevron icon</title>
               <path
                 fill-rule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
               />
             </svg>
           </button>
-          <button id="next-topic" class="btn">
+          <button type="button" id="next-topic" class="btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -175,6 +179,7 @@
               class="bi bi-chevron-right"
               viewBox="0 0 16 16"
             >
+              <title>right chevron icon</title>
               <path
                 fill-rule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
@@ -194,6 +199,7 @@
         </div>
         <div class="toolbox">
           <button
+            type="button"
             id="settings-button"
             class="btn btn-sm toolbox-button"
             data-bs-toggle="offcanvas"
@@ -208,6 +214,7 @@
               class="bi bi-gear-wide-connected"
               viewBox="0 0 16 16"
             >
+              <title>gear icon</title>
               <path
                 d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z"
               />
@@ -247,7 +254,6 @@
       class="modal"
       id="topics-modal"
       tabindex="-1"
-      aria-labelledby="topicsModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-dialog-scrollable">
@@ -303,7 +309,6 @@
       class="modal"
       id="timer-history-modal"
       tabindex="-1"
-      aria-labelledby="timerHistoryModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-lg modal-dialog-scrollable">

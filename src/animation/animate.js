@@ -1,7 +1,7 @@
-import { animationStateStore } from "./animation-store";
-import { animationSpeedStore } from "../settings/animation-speed-store";
 import { FRAMES } from "../constants";
-import { WebHaptics, defaultPatterns } from "web-haptics";
+import { animationSpeedStore } from "../settings/animation-speed-store";
+import { animationStateStore } from "./animation-store";
+import "ios-vibrator-pro-max";
 
 const extension = {
   png: "png",
@@ -22,7 +22,6 @@ function getPublicPathTo(filePath) {
 }
 
 const sound = new Audio(getPublicPathTo(`stone-fall.MP3`));
-const haptics = new WebHaptics();
 
 export async function animate(catEl, options) {
   animationStateStore.playstart();
@@ -46,14 +45,7 @@ export async function animate(catEl, options) {
   }
 
   if (withHapticFeedback) {
-    const hapticFeedbackDurationInMs = 100;
-    const hapticFeedbackDelay =
-      animationDurationInMs - hapticFeedbackDurationInMs;
-
-    const timeoutId = setTimeout(() => {
-      haptics.trigger(defaultPatterns.success);
-      clearTimeout(timeoutId);
-    }, hapticFeedbackDelay);
+    navigator.vibrate(200);
   }
 
   for (let i = 0; i < FRAMES.length; i++) {

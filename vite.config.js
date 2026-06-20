@@ -1,4 +1,4 @@
-import { VitePWA } from 'vite-plugin-pwa';
+import { VitePWA } from "vite-plugin-pwa";
 
 export default {
   server: {
@@ -10,31 +10,31 @@ export default {
   plugins: [
     VitePWA({
       manifest: {
-        name: 'Просто отпусти это',
-        short_name: 'Отпускай',
-        description: 'Вместе с котиком :3',
-        theme_color: '#ffffff',
-        background_color: '#2d2d2d',
+        name: "Просто отпусти это",
+        short_name: "Отпускай",
+        description: "Вместе с котиком :3",
+        theme_color: "#ffffff",
+        background_color: "#2d2d2d",
         icons: [
           {
-            src: 'android-chrome-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
+            src: "android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
           },
           {
-            src: 'android-chrome-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            src: "android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
           },
         ],
       },
       includeAssets: [
-        'favicon.ico',
-        'apple-touch-icon.png',
-        'cat-frames/*.svg',
+        "favicon.ico",
+        "apple-touch-icon.png",
+        "cat-frames/*.svg",
       ],
-      registerType: 'autoUpdate',
-      injectRegister: 'auto',
+      registerType: "autoUpdate",
+      injectRegister: "auto",
       devOptions: { enabled: false },
     }),
   ],
@@ -42,10 +42,10 @@ export default {
     preprocessorOptions: {
       scss: {
         silenceDeprecations: [
-          'import',
-          'mixed-decls',
-          'color-functions',
-          'global-builtin',
+          "import",
+          "mixed-decls",
+          "color-functions",
+          "global-builtin",
         ],
       },
     },

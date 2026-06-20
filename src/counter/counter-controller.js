@@ -1,6 +1,6 @@
-import { counterStore } from './counter-store';
+import { counterStore } from "./counter-store";
 
-const counterEl = document.getElementById('counter');
+const counterEl = document.getElementById("counter");
 
 export function incCounter() {
   if (!counterEl) return;
@@ -9,7 +9,7 @@ export function incCounter() {
   counterEl.innerText = counterStore.counter;
 }
 
-counterEl.addEventListener('click', (event) => {
+counterEl.addEventListener("click", (event) => {
   event.preventDefault();
   event.stopPropagation();
 

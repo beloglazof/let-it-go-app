@@ -19,14 +19,9 @@ function formatTime(milliseconds) {
 }
 
 const shortDateOptions = { weekday: "short", month: "short", day: "numeric" };
-const longDateOptions = {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-};
+
 function formatDate(dateString, options = shortDateOptions) {
-  const date = new Date(dateString + "T00:00:00");
+  const date = new Date(`${dateString}T00:00:00`);
   return date.toLocaleDateString("ru-RU", options);
 }
 
@@ -47,7 +42,6 @@ const dayDetailsEl = document.getElementById("timer-history-day-details");
 const calendarModalEl = document.getElementById("timer-history-modal");
 
 const todayDateString = new Date().toISOString().split("T")[0];
-const expandedTopics = new Set();
 
 let currentDate = new Date();
 let selectedDate = todayDateString;
@@ -178,7 +172,7 @@ function renderDayDetails(dateStr) {
   const topicsListHtml = topicsArray
     .map(({ topic, topicTime }) => {
       return `
-        <div class="topic-item">
+        <div class="history-topic-item">
           <span class="topic-name">${topic}</span>
           <span class="topic-total">${formatTime(topicTime)}</span>
         </div>
@@ -187,36 +181,18 @@ function renderDayDetails(dateStr) {
     .join("");
 
   const detailsId = `${dateStr}-details`;
-  const isExpanded = expandedTopics.has(detailsId);
 
   dayDetailsEl.innerHTML = `
     <button class="expand-button day-details-header" data-details-id="${detailsId}">
       <span class="day-details-date">
-        <span class="toggle-icon">${isExpanded ? "▼" : "▶"}</span>
         <span>${formatDate(dateStr)}</span>
       </span>
       <span class="day-total">${formatTime(totalDayTime)}</span>
     </button>
-    ${
-      isExpanded
-        ? `
       <div class="day-details-body">
         ${topicsListHtml}
       </div>
-    `
-        : ""
-    }
   `;
-
-  dayDetailsEl.querySelector(".expand-button").addEventListener("click", () => {
-    if (expandedTopics.has(detailsId)) {
-      expandedTopics.delete(detailsId);
-    } else {
-      expandedTopics.add(detailsId);
-    }
-
-    renderDayDetails(dateStr);
-  });
 }
 
 export function updateHistoryDisplay() {

@@ -5,19 +5,22 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check": "biome check",
+    "check:write": "biome check --write"
   },
   "keywords": [],
   "author": "Slava Beloglazov",
   "license": "ISC",
   "description": "Just let it go",
   "devDependencies": {
+    "@biomejs/biome": "2.5.0",
     "sass": "^1.89.1",
     "vite": "^6.3.5",
     "vite-plugin-pwa": "^1.0.1"
   },
   "dependencies": {
     "bootstrap": "^5.3.6",
-    "web-haptics": "^0.0.6"
+    "ios-vibrator-pro-max": "^3.0.3"
   }
 }

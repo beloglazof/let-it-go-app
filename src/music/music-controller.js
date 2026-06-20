@@ -1,5 +1,5 @@
-const musicEl = document.getElementById('music');
-const musicButtonEl = document.getElementById('music-button');
+const musicEl = document.getElementById("music");
+const musicButtonEl = document.getElementById("music-button");
 
 const playMusic = () => {
   if (!musicEl) {
@@ -7,8 +7,8 @@ const playMusic = () => {
   }
 
   musicEl.play();
-  musicButtonEl.innerText = '🙅';
-  musicButtonEl.classList.add('playing');
+  musicButtonEl.innerText = "🔊";
+  musicButtonEl.classList.add("playing");
 };
 
 const pauseMusic = () => {
@@ -17,8 +17,8 @@ const pauseMusic = () => {
   }
 
   musicEl.pause();
-  musicButtonEl.innerText = '🕺';
-  musicButtonEl.classList.remove('playing');
+  musicButtonEl.innerText = "🔇";
+  musicButtonEl.classList.remove("playing");
 };
 
 function handleMusicToggle(event) {
@@ -28,4 +28,4 @@ function handleMusicToggle(event) {
   musicEl.paused ? playMusic() : pauseMusic();
 }
 
-musicButtonEl.addEventListener('click', handleMusicToggle);
+musicButtonEl.addEventListener("click", handleMusicToggle);

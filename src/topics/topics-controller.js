@@ -1,7 +1,7 @@
 import {
   saveSession,
-  startNewSession,
   setCurrentTopic,
+  startNewSession,
 } from "../timer/timer-controller.js";
 
 const TOPICS_KEY = "letitgo_topics";
@@ -26,7 +26,7 @@ function autoResizeTopicCardFont(
   maxFontSize = 1.6,
 ) {
   let fontSize = maxFontSize;
-  element.style.fontSize = fontSize + "rem";
+  element.style.fontSize = `${fontSize}rem`;
 
   while (
     (element.scrollWidth > element.clientWidth ||
@@ -34,7 +34,7 @@ function autoResizeTopicCardFont(
     fontSize > minFontSize
   ) {
     fontSize -= 0.1;
-    element.style.fontSize = fontSize + "rem";
+    element.style.fontSize = `${fontSize}rem`;
   }
 }
 
@@ -119,7 +119,7 @@ newTopicForm.addEventListener("submit", (event) => {
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     newTopicInput.value = "";
     renderTopicsList();
-    
+
     if (wasEmpty) {
       saveSession();
       startNewSession(value);
@@ -144,7 +144,7 @@ newTopicInput.addEventListener("paste", (event) => {
     renderTopicsList();
     newTopicInput.value = "";
     newTopicInput.blur();
-    
+
     if (wasEmpty) {
       saveSession();
       startNewSession(lines[0]);
@@ -165,15 +165,15 @@ topicsList.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete-topic-button")) {
     const idx = Number(e.target.dataset.idx);
     const deletingCurrentTopic = idx === currentTopicIndex;
-    
+
     if (deletingCurrentTopic) {
       saveSession();
     }
-    
+
     topics.splice(idx, 1);
     localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
     renderTopicsList();
-    
+
     if (topics.length === 0) {
       currentTopicIndex = 0;
       startNewSession(null);

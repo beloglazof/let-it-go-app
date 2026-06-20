@@ -1,6 +1,6 @@
-import { AnimationState } from "./src/constants";
 import { animate } from "./src/animation/animate";
 import { animationStateStore } from "./src/animation/animation-store";
+import { AnimationState } from "./src/constants";
 import { incCounter } from "./src/counter/counter-controller";
 import { pingTimer } from "./src/timer/timer-controller";
 
